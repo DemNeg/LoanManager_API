@@ -1,18 +1,19 @@
 /* 
-    Create and export the module for users
+    Create and export the module for invoices
     ****************************************************************
     BY - Singou Dembele 
 */
 
+
 var express = require('express');
 var router = express.Router();
 
-userModel =require('../models/users.model');
+const invoiceModel= require('../models/invoices.model');
 
 
-/* GET users listing. */
+/* GET invoices listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.send('respond with invoices');
 });
 
 module.exports = router;

@@ -1,18 +1,18 @@
 /* 
-    Create and export the module for users
+    Create and export the module for customers
     ****************************************************************
     BY - Singou Dembele 
 */
 
+
 var express = require('express');
 var router = express.Router();
 
-userModel =require('../models/users.model');
+const customerModel= require('../models/customers.model');
 
-
-/* GET users listing. */
+/* GET customers listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.send('respond with customers ...');
 });
 
 module.exports = router;

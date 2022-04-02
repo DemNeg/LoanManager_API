@@ -1,18 +1,18 @@
 /* 
-    Create and export the module for users
+    Create and export the module for auditLogs
     ****************************************************************
     BY - Singou Dembele 
 */
 
+
 var express = require('express');
 var router = express.Router();
 
-userModel =require('../models/users.model');
+const auditLogModel= require('../models/auditLogs.model');
 
-
-/* GET users listing. */
+/* GET auditLogs listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.send('respond with logs ...');
 });
 
 module.exports = router;

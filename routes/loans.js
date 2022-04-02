@@ -1,18 +1,19 @@
 /* 
-    Create and export the module for users
+    Create and export the module for loans
     ****************************************************************
     BY - Singou Dembele 
 */
 
+
 var express = require('express');
 var router = express.Router();
 
-userModel =require('../models/users.model');
+const loanModel= require('../models/loans.model');
 
 
-/* GET users listing. */
+/* GET loans listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.send('respond with Loans ...');
 });
 
 module.exports = router;

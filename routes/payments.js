@@ -1,18 +1,18 @@
 /* 
-    Create and export the module for users
+    Create and export the module for payments
     ****************************************************************
     BY - Singou Dembele 
 */
 
+
 var express = require('express');
 var router = express.Router();
 
-userModel =require('../models/users.model');
+const paymentModel= require('../models/payment.model');
 
-
-/* GET users listing. */
+/* GET payments listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.send('respond with payments ...');
 });
 
 module.exports = router;
