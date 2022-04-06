@@ -1,3 +1,4 @@
 module.exports = {
-    DB_URL:'mongo://localhost:27017/LoanManager'
+    DB_URL:'mongodb://localhost:27017/LoansManager'
+    
 }
