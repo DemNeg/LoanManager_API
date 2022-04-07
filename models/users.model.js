@@ -1,5 +1,5 @@
 /* 
-    Create and export the model for the customers
+    Create and export the model for the Users
     ****************************************************************
     BY - Singou Dembele 
 */
