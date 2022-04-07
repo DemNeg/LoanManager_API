@@ -17,61 +17,77 @@ router.get('/', function(req, res, next) {
       res.send({status:500, message:'Unable to find the customer'});
     }else {
       const recordCount = customers.length;
-      res.send({status:200,recordCount:recordCount,data:customers});
+      res.send({status:200,recordCount:recordCount,results:customers});
     }
   })
 });
 
 /* GET get detail of specific customer. */
 router.get('/view', (req, res, next)=> {
-  const userId = req.query.userId;
+  const userId = req.query.id;
 
   customerModel.findById(userId,(err, customers) => {
     if(err) {
       res.send({status:500, message:'Unable to find the customer'});
     }else {
-      res.send({status:200, data:customers});
+      res.send({status:200, results:customers});
     }
   })
 });
 
 /* CREATE new customer. */
 router.post('/add', function(req, res, next) {
+
+  let firstName= req.body.firstName;
+  let lastName= req.body.lastName;
+  let emailAddress= req.body.emailAddress;
+  let phoneNumber= req.body.phoneNumber;
+  let dob= req.body.dob;
+  let department= req.body.department;
+
   let customerObj =new customerModel({
-    firstName: "singou",
-    lastName: "Dembele",
-    emailAddress: "singou@gmail.com",
-    phoneNumber: "123124",
-    dob: "12-5-1998",
-    department: "DSI"
+    firstName: firstName,
+    lastName: lastName,
+    emailAddress: emailAddress,
+    phoneNumber: phoneNumber,
+    dob: dob,
+    department: department
   });
 
   customerObj.save((err, customer)=>{
     if(err){
       res.send(err)
     }else{
-      res.send({status:200,data:customer})
+      res.send({status:200,results:customer})
     }
   })
 });
 
 /* UPDATE an existing customer. */
 router.put('/update', function(req, res, next) {
-  const userId = req.query.userId;
+
+  const userId = req.body.userId;
+  let firstName= req.body.firstName;
+  let lastName= req.body.lastName;
+  let emailAddress= req.body.emailAddress;
+  let phoneNumber= req.body.phoneNumber;
+  let dob= req.body.dob;
+  let department= req.body.department;
+
   let customerObj ={
-    firstName: "Mohamed",
-    lastName: "dembele",
-    emailAddress: "Moh@gmail.com",
-    phoneNumber: "52455841",
-    dob: "12-5-2000",
-    department: "DSI"
+    firstName: firstName,
+    lastName: lastName,
+    emailAddress: emailAddress,
+    phoneNumber: phoneNumber,
+    dob: dob,
+    department: department
   };
 
-  customerModel.findByIdAndUpdate(userId, customerObj,(err,customer)=>{
+  customerModel.findByIdAndUpdate(userId, customerObj,(err,customerObj)=>{
     if (err) {
       res.send({status:500, message:'Unable to update customer'});
     }else{
-      res.send({status:200, data:customer});
+      res.send({status:200, message:'Customer updated successfully', data:customerObj});
     }
   })
 });
@@ -94,4 +110,6 @@ router.delete('/delete', function(req, res, next) {
 router.get('/search   ', function(req, res, next) {
   res.send('respond with customers ...');
 });
+
+
 module.exports = router;
