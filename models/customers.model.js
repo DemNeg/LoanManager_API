@@ -1,7 +1,12 @@
+/* 
+    Create and export the model for the customers
+    ****************************************************************
+    BY - Singou Dembele 
+*/
+
 const mongoose = require('mongoose');
 
 const customerSchema = mongoose.Schema({
-    customerID: Number,
     firstName: String,
     lastName: String,
     emailAddress: String,
