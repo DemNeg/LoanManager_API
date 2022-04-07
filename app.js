@@ -13,6 +13,8 @@ var loansRouter = require("./routes/loans");
 var paymentsRouter = require("./routes/payments");
 var settingsRouter = require("./routes/settings");
 
+var cors = require("cors")
+
 var mongoose = require("mongoose");
 db_url = require("./properties").DB_URL;
 mongoose.connect(db_url);
@@ -21,6 +23,7 @@ mongoose.connection.on("connected", () => {
 });
 
 var app = express();
+app.use(cors());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
