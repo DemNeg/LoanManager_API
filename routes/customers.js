@@ -66,7 +66,7 @@ router.post('/add', function(req, res, next) {
 /* UPDATE an existing customer. */
 router.put('/update', function(req, res, next) {
 
-  const userId = req.body.userId;
+  const userId = req.query.id;
   let firstName= req.body.firstName;
   let lastName= req.body.lastName;
   let emailAddress= req.body.emailAddress;
@@ -83,11 +83,11 @@ router.put('/update', function(req, res, next) {
     department: department
   };
 
-  customerModel.findByIdAndUpdate(userId, customerObj,(err,customerObj)=>{
+  customerModel.findByIdAndUpdate(userId, customerObj,(err,customer)=>{
     if (err) {
       res.send({status:500, message:'Unable to update customer'});
     }else{
-      res.send({status:200, message:'Customer updated successfully', data:customerObj});
+      res.send({status:200, message:'Customer updated successfully', data:customer});
     }
   })
 });
@@ -95,7 +95,7 @@ router.put('/update', function(req, res, next) {
 
 /* DELETE existing customer. */
 router.delete('/delete', function(req, res, next) {
-  const userId = req.query.userId;
+  const userId = req.query.id;
 
   customerModel.findByIdAndDelete(userId,(err, deletedCustomer) => {
     if(err) {
